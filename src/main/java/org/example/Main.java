@@ -1,5 +1,8 @@
 package org.example;
 
+/**
+ * Clase Main para comprobar el funcionamiento de nuestros metodos.
+ */
 public class Main {
     public static void main(String[] args) {
         // Crear una nueva agenda.
