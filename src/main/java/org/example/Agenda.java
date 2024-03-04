@@ -5,34 +5,34 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * La clase Agenda sirve para almacenar una lista de varios {@link Contacto}.
+ * La clase Agenda sirve para almacenar una lista de varios {@link Persona}.
  * @version 1.0
  * @since 2024
  * @author pedro
  */
 public class Agenda {
     /**
-     * Lista de {@link Contacto} que tendra la {@link Agenda}.
+     * Lista de {@link Persona} que tendra la {@link Agenda}.
      */
-    private List<Contacto> contacts; // Lista de Contacto
+    private List<Persona> contacts; // Lista de Contacto
 
     /**
-     * Constructor que genera una {@link Agenda} con una lista de {@link Contacto} vacia.
+     * Constructor que genera una {@link Agenda} con una lista de {@link Persona} vacia.
      */
     public Agenda() {
         this.contacts = new ArrayList<>();
     }
 
     /**
-     * Metodo que sirve para agregar un {@link Contacto} a la {@link Agenda}, estableciendo el nombre y un numero de
-     * telefono, en el caso de que ese {@link Contacto} no existiera previamente y en el caso de que existiera,
-     * para agregar un numero de telefono a ese {@link Contacto} preexistente en la {@link Agenda}.
-     * @param name El nombre del {@link Contacto} que se quiere agregar o al que se quiere agregar un nuevo telefono.
+     * Metodo que sirve para agregar un {@link Persona} a la {@link Agenda}, estableciendo el nombre y un numero de
+     * telefono, en el caso de que ese {@link Persona} no existiera previamente y en el caso de que existiera,
+     * para agregar un numero de telefono a ese {@link Persona} preexistente en la {@link Agenda}.
+     * @param name El nombre del {@link Persona} que se quiere agregar o al que se quiere agregar un nuevo telefono.
      * @param phone El numero de telefono que se quiere agregar.
      */
     public void addContact(String name, String phone) {
         boolean exists = false;
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 exists = true;
                 c.getPhones().add(phone);
@@ -41,20 +41,20 @@ public class Agenda {
         }
 
         if (!exists) {
-            Contacto newContact = new Contacto(name, phone);
+            Persona newContact = new Persona(name, phone);
             contacts.add(newContact);
         }
     }
 
     /**
-     * Metodo que sirve para eliminar un {@link Contacto} de la {@link Agenda}.
-     * @param name El nombre del {@link Contacto} que se quiere eliminar.
+     * Metodo que sirve para eliminar un {@link Persona} de la {@link Agenda}.
+     * @param name El nombre del {@link Persona} que se quiere eliminar.
      */
     public void removeContact(String name) {
-        Iterator<Contacto> it = contacts.iterator();
+        Iterator<Persona> it = contacts.iterator();
 
         while (it.hasNext()) {
-            Contacto c = it.next();
+            Persona c = it.next();
 
             if (c.getName().equalsIgnoreCase(name)) {
                 it.remove();
@@ -63,14 +63,14 @@ public class Agenda {
     }
 
     /**
-     * Metodo que sirve para eliminar un numero de telefono antiguo de un {@link Contacto} en la {@link Agenda} y
+     * Metodo que sirve para eliminar un numero de telefono antiguo de un {@link Persona} en la {@link Agenda} y
      * sustituirlo por un nuevo numero de telefono .
-     * @param name El nombre del {@link Contacto} al que quieres cambiar el número de telefono.
+     * @param name El nombre del {@link Persona} al que quieres cambiar el número de telefono.
      * @param oldPhone El numero de telefono antiguo que quieres sustituir.
      * @param newPhone El numero de telefono nuevo que va a sustituir al antiguo.
      */
     public void modifyPhoneNumber(String name, String oldPhone, String newPhone) {
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 List<String> phones = c.getPhones();
 
@@ -84,10 +84,10 @@ public class Agenda {
     }
 
     /**
-     * Metodo que sirve para mostrar todos los {@link Contacto} que hay en la {@link Agenda}
-     * @return una lista de {@link Contacto}.
+     * Metodo que sirve para mostrar todos los {@link Persona} que hay en la {@link Agenda}
+     * @return una lista de {@link Persona}.
      */
-    public List<Contacto> getContacts() {
+    public List<Persona> getContacts() {
         return this.contacts;
     }
 }
